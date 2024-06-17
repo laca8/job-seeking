@@ -7,40 +7,30 @@ import ResumeModal from "./ResumeModal";
 
 const MyApplications = () => {
   const { user } = useContext(Context);
-  const [applications, setApplications] = useState([]);
+  const [applications, setApplications] = useState([{
+    title:"Web Developer",
+    category:"Programmer",
+    "country":"Egypt",
+    "city":"Cairo",
+    "location":"Cairo,Egypt",
+    "description":"Experienced [Job Title] with background in creating custom websites using advanced HTML, CSS and JavaScript skills.",
+    "jobPostedOn":"After 1 Month"
+  },{
+    title:"Web Developer",
+    category:"Programmer",
+    "country":"Egypt",
+    "city":"Cairo",
+    "location":"Cairo,Egypt",
+    "description":"Experienced [Job Title] with background in creating custom websites using advanced HTML, CSS and JavaScript skills.",
+    "jobPostedOn":"After 1 Month"
+  }]);
   const [modalOpen, setModalOpen] = useState(false);
   const [resumeImageUrl, setResumeImageUrl] = useState("");
 
   const { isAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
 
-  useEffect(() => {
-    try {
-      if (user && user.role === "Employer") {
-        axios
-          .get("http://localhost:4000/api/v1/application/employer/getall", {
-            withCredentials: true,
-          })
-          .then((res) => {
-            setApplications(res.data.applications);
-          });
-      } else {
-        axios
-          .get("http://localhost:4000/api/v1/application/jobseeker/getall", {
-            withCredentials: true,
-          })
-          .then((res) => {
-            setApplications(res.data.applications);
-          });
-      }
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-  }, [isAuthorized]);
-
-  if (!isAuthorized) {
-    navigateTo("/");
-  }
+ 
 
   const deleteApplication = (id) => {
     try {
@@ -70,15 +60,10 @@ const MyApplications = () => {
 
   return (
     <section className="my_applications page">
-      {user && user.role === "Job Seeker" ? (
+  
         <div className="container">
           <h1>My Applications</h1>
-          {applications.length <= 0 ? (
-            <>
-              {" "}
-              <h4>No Applications Found</h4>{" "}
-            </>
-          ) : (
+        
             applications.map((element) => {
               return (
                 <JobSeekerCard
@@ -91,7 +76,6 @@ const MyApplications = () => {
             })
           )}
         </div>
-      ) : (
         <div className="container">
           <h1>Applications From Job Seekers</h1>
           {applications.length <= 0 ? (
