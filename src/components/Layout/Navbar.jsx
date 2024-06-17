@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={"navbarShow"}>
+    <nav className="navbarShow">
       <div className="container">
         <div className="logo">
           <img src="/JobZee-logos__white.png" alt="logo" />
