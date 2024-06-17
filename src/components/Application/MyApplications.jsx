@@ -78,11 +78,7 @@ const MyApplications = () => {
         </div>
         <div className="container">
           <h1>Applications From Job Seekers</h1>
-          {applications.length <= 0 ? (
-            <>
-              <h4>No Applications Found</h4>
-            </>
-          ) : (
+        
             applications.map((element) => {
               return (
                 <EmployerCard
@@ -90,7 +86,7 @@ const MyApplications = () => {
                   key={element._id}
                   openModal={openModal}
                 />
-              );
+       
             })
           )}
         </div>
