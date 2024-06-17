@@ -34,15 +34,14 @@ const Application = () => {
     formData.append("jobId", id);
 
     try {
-      console.log("add")
+      const user = {name,email,phone,address,coverLetter,resume}
+      console.log(user)
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  if (!isAuthorized || (user && user.role === "Employer")) {
-    navigateTo("/");
-  }
+ 
 
   return (
     <section className="application">
