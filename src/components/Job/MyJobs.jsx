@@ -7,30 +7,21 @@ import { Context } from "../../main";
 import { useNavigate } from "react-router-dom";
 
 const MyJobs = () => {
-  const [myJobs, setMyJobs] = useState([]);
+  const [myJobs, setMyJobs] = useState([{
+    title:"Web Developer",
+    category:"Programmer",
+    "country":"Egypt",
+    "city":"Cairo",
+    "location":"Cairo,Egypt",
+    "description":"Experienced [Job Title] with background in creating custom websites using advanced HTML, CSS and JavaScript skills.",
+    "jobPostedOn":"After 1 Month"
+  }]);
   const [editingMode, setEditingMode] = useState(null);
   const { isAuthorized, user } = useContext(Context);
 
   const navigateTo = useNavigate();
   //Fetching all jobs
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const { data } = await axios.get(
-          "http://localhost:4000/api/v1/job/getmyjobs",
-          { withCredentials: true }
-        );
-        setMyJobs(data.myJobs);
-      } catch (error) {
-        toast.error(error.response.data.message);
-        setMyJobs([]);
-      }
-    };
-    fetchJobs();
-  }, []);
-  if (!isAuthorized || (user && user.role !== "Employer")) {
-    navigateTo("/");
-  }
+
 
   //Function For Enabling Editing Mode
   const handleEnableEdit = (jobId) => {
