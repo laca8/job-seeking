@@ -105,20 +105,20 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
     <>
       <div className="job_seeker_card">
         <div className="detail">
-          <p>
-            <span>Name:</span> {element.name}
+           <p>
+            <span>Name:</span> {"Ahmed Ragab"}
           </p>
           <p>
-            <span>Email:</span> {element.email}
+            <span>Email:</span> {"laca@gmail.com"}
           </p>
           <p>
-            <span>Phone:</span> {element.phone}
+            <span>Phone:</span> {"01140331005"}
           </p>
           <p>
-            <span>Address:</span> {element.address}
+            <span>Address:</span> {"cairo"}
           </p>
           <p>
-            <span>CoverLetter:</span> {element.coverLetter}
+            <span>CoverLetter:</span> {"Experienced [Job Title] with background in creating custom websites using advanced HTML, CSS and JavaScript skills."}
           </p>
         </div>
         <div className="resume">
