@@ -5,27 +5,20 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../../main";
 const JobDetails = () => {
   const { id } = useParams();
-  const [job, setJob] = useState({});
+  const [job, setJob] = useState({
+    title:"Web Developer",
+    category:"Programmer",
+    "country":"Egypt",
+    "city":"Cairo",
+    "location":"Cairo,Egypt",
+    "description":"Experienced [Job Title] with background in creating custom websites using advanced HTML, CSS and JavaScript skills.",
+    "jobPostedOn":"After 1 Month"
+  },);
   const navigateTo = useNavigate();
 
   const { isAuthorized, user } = useContext(Context);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/v1/job/${id}`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setJob(res.data.job);
-      })
-      .catch((error) => {
-        navigateTo("/notfound");
-      });
-  }, []);
-
-  if (!isAuthorized) {
-    navigateTo("/login");
-  }
+  
 
   return (
     <section className="jobDetail page">
