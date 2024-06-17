@@ -4,22 +4,26 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../main";
 
 const Jobs = () => {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState([{
+    title:"Web Developer",
+    category:"Frontend",
+    "country":"Egypt",
+    "city":"Cairo",
+    "location":"Cairo,Egypt",
+    "description":"Experienced [Job Title] with background in creating custom websites using advanced HTML, CSS and JavaScript skills.",
+    "jobPostedOn":"After 1 Month"
+  },{
+    title:"Web Developer",
+    category:"Backend",
+    "country":"Egypt",
+    "city":"Cairo",
+    "location":"Cairo,Egypt",
+    "description":"Experienced [Job Title] with background in creating custom websites using advanced HTML, CSS and JavaScript skills.",
+    "jobPostedOn":"After 1 Month"
+  }]);
   const { isAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
-  useEffect(() => {
-    try {
-      axios
-        .get("http://localhost:4000/api/v1/job/getall", {
-          withCredentials: true,
-        })
-        .then((res) => {
-          setJobs(res.data);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+ 
 
 
   return (
@@ -27,8 +31,8 @@ const Jobs = () => {
       <div className="container">
         <h1>ALL AVAILABLE JOBS</h1>
         <div className="banner">
-          {jobs.jobs &&
-            jobs.jobs.map((element) => {
+          {jobs &&
+            jobs.map((element) => {
               return (
                 <div className="card" key={element._id}>
                   <p>{element.title}</p>
