@@ -13,7 +13,7 @@ const JobDetails = () => {
     "location":"Cairo,Egypt",
     "description":"Experienced [Job Title] with background in creating custom websites using advanced HTML, CSS and JavaScript skills.",
     "jobPostedOn":"After 1 Month"
-  },);
+  });
   const navigateTo = useNavigate();
 
   const { isAuthorized, user } = useContext(Context);
