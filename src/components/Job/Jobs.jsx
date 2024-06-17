@@ -20,9 +20,7 @@ const Jobs = () => {
       console.log(error);
     }
   }, []);
-  if (!isAuthorized) {
-    navigateTo("/");
-  }
+
 
   return (
     <section className="jobs page">
